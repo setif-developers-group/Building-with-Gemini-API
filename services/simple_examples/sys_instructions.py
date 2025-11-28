@@ -1,3 +1,4 @@
+# https://ai.google.dev/gemini-api/docs/text-generation#system-instructions
 
 from google import genai
 import os
