@@ -10,7 +10,7 @@ class Quiz(BaseModel):
     answer: str
 
 client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
-response = client.chat(
+response = client.models.generate_content(
     model="gemini-2.0-flash",
     contents="generate a quiz question on AI",
     config={
@@ -22,4 +22,4 @@ response = client.chat(
 print(response.text)
 ai_quiz = Quiz.model_validate_json(response.text)
 
-print(f'Question: {ai_quiz.question}, \n Options: {ai_quiz.options}, \n Answer: {ai_quiz.answer}')
+print(f'Question: {ai_quiz.question}, \n\n\n Options: \n\t -| {"\n\t -| ".join(ai_quiz.options)}, \n\n\n Answer: {ai_quiz.answer}')
