@@ -5,7 +5,7 @@ import os
 
 # this is the wrong way to do it 
 client = genai.Client(api_key="GOOGLE_API_KEY")
-response = client.chat(
+response = client.models.generate_content(
     model="gemini-2.0-flash-lite",
     contents="Explain what is AI"
 )
